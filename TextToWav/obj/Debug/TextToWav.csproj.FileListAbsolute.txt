@@ -1,0 +1,10 @@
+H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.csproj.CoreCompileInputs.cache
+H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\bin\Debug\TextToWav.exe.config
+H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\bin\Debug\TextToWav.exe
+H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\bin\Debug\TextToWav.pdb
+H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.exe
+H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.pdb
+C:\Users\26696\Desktop\TestTextTool\TextToWav.exe.config
+C:\Users\26696\Desktop\TestTextTool\TextToWav.exe
+C:\Users\26696\Desktop\TestTextTool\TextToWav.pdb
+H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.csprojAssemblyReference.cache
