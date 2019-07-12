@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Speech.Synthesis;
@@ -13,15 +14,29 @@ namespace TextToWav
 
         static void Main(string[] args)
         {
-            string folderPath="";
+            Console.WriteLine("解析程序初始化");
+            Console.WriteLine("当前程序运行路径" + System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Text\Text.txt");
+
+            string folderPath ="";
             try
             {
                 folderPath = ReadData(args[0]);
             }
             catch
             {
-                Console.WriteLine("配置文件获取失败。。。");
+                Console.WriteLine("无法通过配置文件获取。。。尝试从当前路径获取配置文件。。。");
+                try
+                {
+                    Console.WriteLine("正在尝试从当前路径获取配置文件。。。");
+                    folderPath = ReadData(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Text\Text.txt");
+                    }
+                catch
+                {
+                    Console.WriteLine("当前路径配置文件获取失败。。。");
+                    Console.WriteLine(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Text\Text.txt");
+                }
             }
+
             try
             {
                 if (folderPath.Length <= 0)
@@ -30,9 +45,10 @@ namespace TextToWav
                 }
                 TextToWavToolClass tool = new TextToWavToolClass(folderPath);
             }
-            catch
+            catch(Exception e)
             {
                 Console.WriteLine("文件生成失败。。。");
+                Console.WriteLine("失败信息：" + e);
             }
     Console.ReadLine();
         }
