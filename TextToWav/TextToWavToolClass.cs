@@ -28,7 +28,7 @@ namespace TextToWav
 
         SpeechSynthesizer synth;
 
-        string folderName="OutPut";
+        string folderName = "OutPut";
 
         string baseFolderName;
 
@@ -38,7 +38,7 @@ namespace TextToWav
 
         private string nPath;
 
-        private string lFName=".wav";
+        private string lFName = ".wav";
 
         //private List<string> _textList;
 
@@ -64,9 +64,12 @@ namespace TextToWav
             {
                 Console.WriteLine("语音处理类初始化失败!!");
             }
+            Console.WriteLine("开始检查违规反斜杠字符");
+            toolText= CheckSelfString(toolText,'\n');
+            Console.WriteLine("违规检测玩步骤完成。。。");
             for (int i = 0; i < toolText.Length; i++)
             {
-                if (toolText[i] == '\n'|| toolText[i] == '\r' || i == toolText.Length - 1)
+                if (toolText[i] == '\n' || toolText[i] == '\r' || i == toolText.Length - 1)
                 {
                     if (i == toolText.Length - 1)
                     {
@@ -74,11 +77,12 @@ namespace TextToWav
                     }
                     if (toolString.Trim().Length == 0)
                     {
-                        Console.WriteLine("空内容无法生成!");
-                        Console.WriteLine("当前位置 --> "+ i );
+                        Console.WriteLine("发现空内容无法生成!");
+                        Console.WriteLine("当前位置 --> " + i);
                         Console.WriteLine("文本总内容 --> ");
                         Console.WriteLine(toolText);
-                        return;
+                        toolString = ",";
+                        //return;
                     }
                     operationText.Add(toolString);
                     toolString = "";
@@ -94,10 +98,12 @@ namespace TextToWav
                 }
             }
 
+            int OpNum = 0;
             if (operationText.Count >= 4)
             {
                 if (operationText[operationText.Count - 4][0] == '/')
                 {
+                    OpNum++;
                     lFName = operationText[operationText.Count - 4].Substring(1, operationText[operationText.Count - 4].Length - 1);
                     while (lFName[lFName.Length - 1] == '\r' || lFName[lFName.Length - 1] == '\n')
                     {
@@ -130,13 +136,14 @@ namespace TextToWav
 
                 if (operationText[operationText.Count - 3][0] == '/')
                 {
+                    OpNum++;
                     baseFolderName = operationText[operationText.Count - 3].Substring(1, operationText[operationText.Count - 3].Length - 1);
                     while (baseFolderName[baseFolderName.Length - 1] == '\r' || baseFolderName[baseFolderName.Length - 1] == '\n')
                     {
                         baseFolderName = baseFolderName.Substring(0, baseFolderName.Length - 1);
                     }
                     Console.WriteLine("检测到自定义路径，执行自定义配置路径");
-                    Console.WriteLine("路径位置 --> "+ baseFolderName);
+                    Console.WriteLine("路径位置 --> " + baseFolderName);
                     operationText.RemoveAt(operationText.Count - 3);
                 }
                 else
@@ -148,6 +155,7 @@ namespace TextToWav
 
                 if (operationText[operationText.Count - 2][0] == '/')
                 {
+                    OpNum++;
                     _haveFileName = true;
                     if (operationText[operationText.Count - 2].Length > 1)
                     {
@@ -169,6 +177,7 @@ namespace TextToWav
 
                 if (operationText[operationText.Count - 1][0] == '/')
                 {
+                    OpNum++;
                     if (operationText[operationText.Count - 1].Length > 1)
                     {
                         folderName = operationText[operationText.Count - 1].Substring(1, operationText[operationText.Count - 1].Length - 1);
@@ -185,21 +194,46 @@ namespace TextToWav
                 {
                     Console.WriteLine("无法从配置表内获取文件夹配置规则，执行默认文件夹配置");
                 }
+
             }
             else
             {
                 Console.WriteLine("无法从配置表内获取配置规则，执行默认配置");
                 Console.WriteLine("操作配置数组长度 --> " + operationText.Count);
             }
+            if (OpNum > 0)
+            {
+                Console.WriteLine(" 开始执行自定义配置特殊字符识别。。。 ");
+                for (int i = 0; i < operationText.Count - 4; i++)
+                {
+                    Console.WriteLine(" 当前处理位置 --> " + i + " --> " + operationText[i]);
+                    operationText[i] = operationText[i].Replace('_', ',');
+                    Console.WriteLine(" 单句处理完成 --> " + operationText[i]);
+                }
+                Console.WriteLine(" 自定义配置特殊字符配置完成，自定义配置未处理。。。 ");
+            }
+            else
+            {
+                Console.WriteLine(" 开始执行一般特殊字符识别。。。 ");
+                for (int i = 0; i < operationText.Count; i++)
+                {
+                    Console.WriteLine(" 当前处理位置 --> " + i + " --> " + operationText[i]);
+                    operationText[i] = operationText[i].Replace('_', ',');
+                    Console.WriteLine(" 单句处理完成 --> " + operationText[i]);
+                }
+                Console.WriteLine(" 一般特殊字符配置完成。。。 ");
+            }
 
             Console.WriteLine("正在检测文件夹路径合法性。。。");
-            nPath = System.IO.Path.Combine(baseFolderName,folderName);
-            Console.WriteLine( "文件夹路径 --> " + nPath);
-            
+            nPath = System.IO.Path.Combine(baseFolderName, folderName);
+            Console.WriteLine("文件夹路径 --> " + nPath);
+
             if (!Directory.Exists(nPath))
             {
                 Directory.CreateDirectory(nPath);
             }
+
+
 
             SaveFile(operationText);
 
@@ -261,8 +295,23 @@ namespace TextToWav
 
 
                 Console.WriteLine("生成成功!在" + filePath + "路径中！", "提示");
-                Console.WriteLine("File Build Complete %"+(int)((100/(float)text.Count)* (i+1) )+ "...");
+                Console.WriteLine("File Build Complete %" + (int)((100 / (float)text.Count) * (i + 1)) + "...");
             }
+        }
+        private string CheckSelfString(string toolStr,char keyWord)
+        {
+            Console.WriteLine("检测函数开始检测违规字符");
+            string rStr=null;
+            int num = 0;
+            for (int i = 0; i < toolStr.Length; i++)
+            {
+                if (toolStr[i] != keyWord)
+                    rStr += toolStr[i];
+                else
+                    num++;
+            }
+            Console.WriteLine("函数运行完成，共有"+num+"处违规字符");
+            return rStr;
         }
     }
 }
