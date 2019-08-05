@@ -8,3 +8,6 @@ C:\Users\26696\Desktop\TestTextTool\TextToWav.exe.config
 C:\Users\26696\Desktop\TestTextTool\TextToWav.exe
 C:\Users\26696\Desktop\TestTextTool\TextToWav.pdb
 H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.csprojAssemblyReference.cache
+C:\Users\54696\Desktop\EXEOut\TextToWav.exe.config
+C:\Users\54696\Desktop\EXEOut\TextToWav.exe
+C:\Users\54696\Desktop\EXEOut\TextToWav.pdb
