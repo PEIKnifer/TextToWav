@@ -18,6 +18,7 @@ namespace TextToWav
             Console.WriteLine("当前程序运行路径" + System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Text\Text.txt");
 
             string folderPath ="";
+
             try
             {
                 folderPath = ReadData(args[0]);
@@ -29,11 +30,52 @@ namespace TextToWav
                 {
                     Console.WriteLine("正在尝试从当前路径获取配置文件。。。");
                     folderPath = ReadData(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Text\Text.txt");
-                    }
+                }
                 catch
                 {
                     Console.WriteLine("当前路径配置文件获取失败。。。");
+                    Console.WriteLine("自动修复程序启动。。。");
+                    folderPath = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Text";
+                    if (false == System.IO.Directory.Exists(folderPath))
+                    {
+                        //创建文件夹
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    if (Directory.Exists(folderPath))
+                    {
+                        Console.WriteLine("自动修复程序执行中 。。。 50% --> Text 文件夹成功创建");
+                    }
+                    else
+                    {
+                        Console.WriteLine("自动修复程序执行出现致命错误 Text 文件夹创建失败");
+                    }
+                    folderPath = folderPath + @"\Text.txt";
+                    if (!System.IO.File.Exists(folderPath))
+                    {
+                        //没有则创建这个文件
+                        FileStream fs1 = new FileStream(folderPath, FileMode.Create, FileAccess.Write);
+                        System.IO.File.SetAttributes(folderPath, FileAttributes.Normal);
+                        StreamWriter sw = new StreamWriter(fs1);
+                        sw.Close();
+                        fs1.Close();
+                    }
+                    if (!System.IO.File.Exists(folderPath))
+                    {
+                        Console.WriteLine("自动修复程序执行出现致命错误 Text 文件夹创建失败");
+                        Console.WriteLine("自动修复程序意外停止，请检查运行环境以及路径配置");
+                    }
+                    else
+                    {
+                        Console.WriteLine("自动修复程序执行中 。。。 100% --> Text.txt 文件成功创建");
+                        Console.WriteLine("请将需要生成的语音按格式写入TXT文件，写入后重启程序生成，TXT文件路径位于工程文件夹下 Text/Text.txt");
+                    }
                     Console.WriteLine(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Text\Text.txt");
+
+                    Console.WriteLine("System Close ...");
+
+                    Console.WriteLine("Enter a key to continue ...");
+                    Console.ReadLine();
+                    return;
                 }
             }
 
