@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TextToWav
 {
-<<<<<<< HEAD
+    public class Test
+    { }
+        /*
     /// <summary>
     /// Unity 设置参考类
     /// </summary>
@@ -148,10 +150,5 @@ namespace TextToWav
         //        Debug.Log("外部程序结束运行时间为:" + pro.ExitTime);
         //        Debug.Log("外部程序结束返回值为:" + pro.ExitCode);
         //    }
-        //}
-=======
-    class UnityTTWSet
-    {
->>>>>>> 17fa8efe97ab91ac1eb24d6129df4b2cfa79911a
-    }
+        //}*/
 }

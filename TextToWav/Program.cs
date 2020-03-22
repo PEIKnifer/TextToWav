@@ -105,7 +105,7 @@ namespace TextToWav
             {
                 fs = new FileStream(txtPath, FileMode.Open, FileAccess.Read);
                 //仅 对文本 执行  读写操作   
-                sr = new StreamReader(fs);
+                sr = new StreamReader(fs, Encoding.Default);
             }
             catch
             {

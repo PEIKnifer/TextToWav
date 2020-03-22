@@ -1,22 +1,6 @@
-H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.csproj.CoreCompileInputs.cache
-H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\bin\Debug\TextToWav.exe.config
-H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\bin\Debug\TextToWav.exe
-H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\bin\Debug\TextToWav.pdb
-H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.exe
-H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.pdb
-C:\Users\26696\Desktop\TestTextTool\TextToWav.exe.config
-C:\Users\26696\Desktop\TestTextTool\TextToWav.exe
-C:\Users\26696\Desktop\TestTextTool\TextToWav.pdb
-H:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.csprojAssemblyReference.cache
-<<<<<<< HEAD
-D:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\bin\Debug\Out\TextToWav.exe.config
-D:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\bin\Debug\Out\TextToWav.exe
-D:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\bin\Debug\Out\TextToWav.pdb
-D:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.csproj.CoreCompileInputs.cache
-D:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.exe
-D:\YuLiangkun\WinWorkSpace\TextToWav\TextToWav\TextToWav\obj\Debug\TextToWav.pdb
-=======
-C:\Users\54696\Desktop\EXEOut\TextToWav.exe.config
-C:\Users\54696\Desktop\EXEOut\TextToWav.exe
-C:\Users\54696\Desktop\EXEOut\TextToWav.pdb
->>>>>>> 17fa8efe97ab91ac1eb24d6129df4b2cfa79911a
+F:\WorkSpace\TextToWav\TextToWav\bin\Debug\Out\TextToWav.exe.config
+F:\WorkSpace\TextToWav\TextToWav\bin\Debug\Out\TextToWav.exe
+F:\WorkSpace\TextToWav\TextToWav\bin\Debug\Out\TextToWav.pdb
+F:\WorkSpace\TextToWav\TextToWav\obj\Debug\TextToWav.csproj.CoreCompileInputs.cache
+F:\WorkSpace\TextToWav\TextToWav\obj\Debug\TextToWav.exe
+F:\WorkSpace\TextToWav\TextToWav\obj\Debug\TextToWav.pdb
